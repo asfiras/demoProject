@@ -2,6 +2,8 @@ package com.Demo.app;
 
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.client.builder.AwsClientBuilder;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import com.amazonaws.services.sqs.model.Message;
 import com.amazonaws.services.sqs.model.SendMessageRequest;
@@ -16,11 +18,14 @@ import java.io.InputStreamReader;
  */
 public class App {
     public static void main(String[] args) throws IOException {
+        BasicAWSCredentials awsCreds = new BasicAWSCredentials("test", "test");
+
         final AmazonSQS sqs = AmazonSQSClientBuilder.standard()
-        .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://localhost:4566","us-east-1"))
+        .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://172.17.0.2:4566","us-east-1"))
+        .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
         .build();
-        String queueUrl_app1 = "http://localhost:4566/000000000000/App1_q";
-        String queueUrl_app2 = "http://localhost:4566/000000000000/App2_q";
+        String queueUrl_app1 = "http://172.17.0.2:4566/000000000000/App1_q";
+        String queueUrl_app2 = "http://172.17.0.2:4566/000000000000/App2_q";
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Enter your choise:");

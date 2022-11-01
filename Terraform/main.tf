@@ -75,3 +75,8 @@ resource "aws_iam_role_policy_attachment" "application_role_rendering_producer" 
   role       = aws_iam_role.application_role.name
   policy_arn = module.App2_q.producer_policy_arn
 }
+
+resource "aws_s3_bucket" "release-bucket" {
+  bucket = "release-bucket"
+  acl    = "public-read"
+}
