@@ -23,7 +23,8 @@ fi
 #test main App function by sending test massage and test to recieve it
 awslocal sqs send-message --queue-url http://localhost:4566/000000000000/App1_q --message-body "test1234" --delay-seconds 10
 check_string=$(awslocal sqs receive-message --queue-url http://localhost:4566/000000000000/App1_q | jq -r '.Messages[] | .Body')
-if [ $check_string == "test1234" ]; then
+echo $check_string
+if [ $check_string = "test1234" ]; then
 echo "App Function tested Successful"
 else
 echo "App Test Failed"
