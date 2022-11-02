@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
  */
 public class App {
     public static void main(String[] args) throws IOException {
+        //configure localstack access
         BasicAWSCredentials awsCreds = new BasicAWSCredentials("test", "test");
 
         final AmazonSQS sqs = AmazonSQSClientBuilder.standard()
@@ -38,6 +39,7 @@ public class App {
         while (choise != 3) {
 
             if (choise == 1) {
+                // send massages to the queue
                 System.out.println("Enter the massage to App2:");
                 String massageToApp2 = br.readLine();
                 SendMessageRequest send_msg_request = new SendMessageRequest()
