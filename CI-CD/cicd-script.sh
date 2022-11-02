@@ -40,6 +40,7 @@ sudo docker build -t app1 /home/firas/Firas/demoProject/CI-CD/App1-dockerfile/ -
 sudo docker build -t app2 /home/firas/Firas/demoProject/CI-CD/App2-dockerfile/ --network="host" --no-cache
 
 #test Terraform code
+cd /home/firas/Firas/demoProject/Terraform
 tflocal validate
 STATUS=$?
 if [ $STATUS -eq 0 ]; then
@@ -49,7 +50,6 @@ echo "Terraform Validation failed , check your code"
 fi
 
 #Setup Aws infrastructure using Terraform
-cd /home/firas/Firas/demoProject/Terraform
 tflocal plan
 STATUS=$?
 if [ $STATUS -eq 0 ]; then
