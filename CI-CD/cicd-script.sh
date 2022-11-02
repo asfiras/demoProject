@@ -42,7 +42,19 @@ sudo docker build -t app2 /home/firas/Firas/demoProject/CI-CD/App2-dockerfile/ -
 #Setup Aws infrastructure using Terraform
 cd /home/firas/Firas/demoProject/Terraform
 tflocal plan
+STATUS=$?
+if [ $STATUS -eq 0 ]; then
+echo "Terraform Plan done successfully"
+else
+echo "Terraform Plan failed , you may not proceed tp Apply"
+fi
 tflocal apply
+STATUS=$?
+if [ $STATUS -eq 0 ]; then
+echo "Terraform Apply done successfully"
+else
+echo "Terraform Apply failed"
+fi
 
 #deploy Apps to docker Daemon
 sudo docker run -i -t -d app1
