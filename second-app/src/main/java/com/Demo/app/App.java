@@ -54,7 +54,7 @@ public class App {
                 List<Message> messages = sqs.receiveMessage(queueUrl_app2).getMessages();
                 System.out.println("the massages you recieved are:");
                 for (Message m : messages) {
-                    System.out.println(m);
+                    System.out.println(m.getBody());
                 }
 
                 // delete messages from the queue
