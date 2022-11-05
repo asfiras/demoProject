@@ -11,3 +11,11 @@ this Project is for Demo and testing purpose
 # Important Note
 this app is using localstack to simulate AWS please visit this page for more info : 
 https://docs.localstack.cloud/get-started/
+
+# needed packages
+- Maven
+- localstack with awslocal and tflocal setup
+- Terraform
+- AWS CLI V2
+- tflint
+- Docker Dameon 

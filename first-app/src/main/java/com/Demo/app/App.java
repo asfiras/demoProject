@@ -18,15 +18,18 @@ import java.io.InputStreamReader;
  */
 public class App {
     public static void main(String[] args) throws IOException {
-        //configure localstack access
+        // configure localstack access and sqs connection
         BasicAWSCredentials awsCreds = new BasicAWSCredentials("test", "test");
-
         final AmazonSQS sqs = AmazonSQSClientBuilder.standard()
-        .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://172.17.0.2:4566","us-east-1"))
-        .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
-        .build();
+                .withEndpointConfiguration(
+                        new AwsClientBuilder.EndpointConfiguration("http://172.17.0.2:4566", "us-east-1"))
+                .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
+                .build();
+        //set sqs endpoint from inside container        
         String queueUrl_app1 = "http://172.17.0.2:4566/000000000000/App1_q";
         String queueUrl_app2 = "http://172.17.0.2:4566/000000000000/App2_q";
+
+        //create Menu for Enduser
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Enter your choise:");
@@ -36,6 +39,7 @@ public class App {
 
         int choise = Integer.parseInt(br.readLine());
 
+        //keep the program running until User choise to exit
         while (choise != 3) {
 
             if (choise == 1) {
@@ -67,12 +71,14 @@ public class App {
                 choise = Integer.parseInt(br.readLine());
             } else if (choise == 3) {
                 break;
-            }
-            else{
+            } else {
+                //handle wroge entry from User
                 System.out.println("you Entered wrong value");
-                System.out.println("Enter your choise:"); 
+                System.out.println("Enter your choise:");
                 choise = Integer.parseInt(br.readLine());
             }
         }
+
     }
+
 }

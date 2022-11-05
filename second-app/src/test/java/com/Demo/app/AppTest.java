@@ -35,13 +35,14 @@ public class AppTest
         .withQueueUrl("http://172.17.0.2:4566/000000000000/App2_q")
         .withMessageBody("TeSt")
         .withDelaySeconds(5);
+        sqs.sendMessage(send_msg_request);
         try {
         TimeUnit.SECONDS.sleep(7);
     } catch (InterruptedException e) {
 
         e.printStackTrace();
     }
-        sqs.sendMessage(send_msg_request);
+        
         List<Message> messages = sqs.receiveMessage("http://172.17.0.2:4566/000000000000/App2_q").getMessages();
                 System.out.println("the massages you recieved are:");
                 for (Message m : messages) {
