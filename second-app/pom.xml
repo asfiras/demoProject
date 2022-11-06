@@ -21,7 +21,7 @@
        <repository>
          <id>internal.repo</id>
          <name>Internal repo</name>
-         <url>file:///home/firas/Firas/demoProject/first-app</url>
+         <url>file:///home/firas/Firas/demoProject/second-app</url>
        </repository>
    </distributionManagement>
 <dependencyManagement>
