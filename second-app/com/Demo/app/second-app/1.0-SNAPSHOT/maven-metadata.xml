@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>com.Demo.app</groupId>
+  <artifactId>second-app</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20221106.085141</timestamp>
+      <buildNumber>4</buildNumber>
+    </snapshot>
+    <lastUpdated>20221106085141</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1.0-20221106.085141-4</value>
+        <updated>20221106085141</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0-20221106.085141-4</value>
+        <updated>20221106085141</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
