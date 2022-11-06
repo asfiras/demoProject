@@ -78,8 +78,11 @@ sudo docker build -t app2 /home/firas/Firas/demoProject/CI-CD/App2-dockerfile/ -
 sudo docker run -i -t -d app1
 sudo docker run -i -t -d app2
 
+
+
 #useful commands
 
 #sudo docker container exec -it $ java -jar /first-app-1.0-SNAPSHOT.jar
 #sudo docker container ls
 #sudo docker run app1 find / -name first-app-1.0-SNAPSHOT.jar
+#sudo docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs sudo docker rm
