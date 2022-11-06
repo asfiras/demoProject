@@ -50,32 +50,6 @@ module "App2_q" {
   queue_name = "App2_q"
 }
 
-
-resource "aws_iam_role" "application_role" {
-  name = "ApplicationRole"
-
-  assume_role_policy = jsonencode({
-    "Version"   = "2012-10-17",
-    "Statement" = [
-      {
-        "Effect"    = "Allow"
-        "Action"    = "sts:AssumeRole"
-        "Principal" = { "Service" = "ec2.amazonaws.com" }
-      }
-    ]
-  })
-}
-
-resource "aws_iam_role_policy_attachment" "application_role_notifications_producer" {
-  role       = aws_iam_role.application_role.name
-  policy_arn = module.App1_q.producer_policy_arn
-}
-
-resource "aws_iam_role_policy_attachment" "application_role_rendering_producer" {
-  role       = aws_iam_role.application_role.name
-  policy_arn = module.App2_q.producer_policy_arn
-}
-
 resource "aws_s3_bucket" "release-bucket" {
   bucket = "release-bucket"
   acl    = "public-read"
